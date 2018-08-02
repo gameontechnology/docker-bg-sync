@@ -10,26 +10,24 @@ of files that need to be read inside of a container.
 This is a basic `docker-compose.yml` that demonstrates usage of this container.
 
 ```
-
-version: '2'
-
+version: '3'
 services:
-  web:
-    image: php:7.0-apache
+  main:
+    image: node:carbon
     volumes:
-      - /var/www/myapp
+      - src-data:/app
 
   bg-sync:
     image: cweagans/bg-sync
     volumes:
       - .:/source
-    volumes_from:
-      - web
+      - src-data:/app
     environment:
-      - SYNC_DESTINATION=/var/www/myapp
-      - SYNC_MAX_INOTIFY_WATCHES=40000
-      - SYNC_VERBOSE=1
+      - SYNC_DESTINATION=/app
     privileged: true
+
+volumes:
+  src-data:
 ```
 
 ## Environment variables
