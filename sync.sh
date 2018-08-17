@@ -159,6 +159,7 @@ silent=$unisonsilent
 ignore = Path .git/*
 ignore = Path .idea/*
 ignore = Path node_modules/*
+ignore = Path .nyc_output/*
 ignore = Name *___jb_tmp___*
 ignore = Name *.tmp
 ignore = Name {.*,*}.sw[pon]
