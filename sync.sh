@@ -156,8 +156,8 @@ repeat=watch
 silent=$unisonsilent
 
 # Files to ignore
-ignore = Path .git/*
-ignore = Path .idea/*
+ignore = Name .git
+ignore = Name .idea/*
 ignore = Name node_modules
 ignore = Name .nyc_output
 ignore = Name *___jb_tmp___*
