@@ -94,7 +94,7 @@ if [ -z "${SYNC_MAX_INOTIFY_WATCHES}" ]; then
   # is greater than the default inotify limit, warn the user so that they can
   # take appropriate action.
   file_count="$(find $SYNC_SOURCE | wc -l)"
-  if [[ "$file_count" < "8192" ]]; then
+  if [[ "$file_count" > "8192" ]]; then
     log_heading "inotify may not be able to monitor all of your files!"
     log_info "By default, inotify can only monitor 8192 files. The configured source directory"
     log_info "contains $file_count files. It's extremely likely that you will need to increase"
@@ -156,8 +156,8 @@ repeat=watch
 silent=$unisonsilent
 
 # Files to ignore
-ignore = Name .git
-ignore = Name .idea/*
+ignore = Path .git/*
+ignore = Path .idea/*
 ignore = Name node_modules
 ignore = Name .nyc_output
 ignore = Name *___jb_tmp___*
