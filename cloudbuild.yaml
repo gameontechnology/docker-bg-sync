@@ -1,0 +1,10 @@
+# Cloud Build Config file
+steps:
+- id: "Docker bgsync build"
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', '${_IMAGE_NAME}', '-t', '${_IMAGE_NAME}:latest', '.' ]
+
+substitutions:
+  _IMAGE_NAME: gcr.io/gameon-clusters/docker-bgsync
+
+images: ['${_IMAGE_NAME}']
